@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>거북팀 신입 안내서</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐢</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --ink: #1a1208;
+    --accent: #c8501a;
+    --green: #3a6b35;
+    --green-light: #e8f0e8;
+    --muted: #8a7a65;
+    --card: #fffdf8;
+    --border: #d4c9b0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  /* ── 히어로 ── */
+  .hero {
+    background: var(--ink);
+    padding: 48px 24px 36px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero::before {
+    content: '🐢';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.04;
+    top: -20px; right: -30px;
+    line-height: 1;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .hero-title span { color: var(--accent); }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .hero-turtle {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+    animation: bob 3s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ── 섹션 공통 ── */
+  .section {
+    padding: 32px 20px 0;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--ink);
+  }
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── 대장 소개 ── */
+  .captain-intro {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .captain-img {
+    width: 100%;
+    display: block;
+    border-radius: 14px;
+  }
+  .captain-body {
+    padding: 16px 18px 18px;
+  }
+  .captain-names {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .captain-tag {
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .captain-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #3a2a1a;
+  }
+  .captain-quote {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: var(--green-light);
+    border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  /* ── 훈련 일정 ── */
+  .training-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .training-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+  }
+  .training-day {
+    width: 64px;
+    flex-shrink: 0;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+  }
+  .training-day .day-kr {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+  }
+  .training-day .day-en {
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+    letter-spacing: 1px;
+  }
+  .training-card.sunday .training-day { background: var(--green); }
+  .training-card.thursday .training-day { background: #5a3a8a; }
+
+  .training-body {
+    flex: 1;
+    padding: 14px 16px;
+  }
+  .training-type {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .training-meta {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .training-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* ── 링크 카드 ── */
+  .link-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .link-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform 0.15s;
+  }
+  .link-card:active { transform: scale(0.98); }
+  .link-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .link-card.green .link-icon { background: var(--green); }
+  .link-body { flex: 1; }
+  .link-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .link-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .link-arrow {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* ── 마일리지 안내 ── */
+  .mileage-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .mileage-header {
+    background: var(--ink);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mileage-header .icon { font-size: 24px; }
+  .mileage-header .title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }
+  .mileage-header .subtitle {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+  .mileage-steps {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mileage-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .step-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #3a2a1a;
+  }
+  .mileage-note {
+    margin: 0 18px 16px;
+    padding: 10px 14px;
+    background: #fff8f0;
+    border: 1px solid #f0d8c0;
+    border-radius: 8px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .mileage-link {
+    margin: 0 18px 18px;
+    display: block;
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── 푸터 ── */
+  .footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 24px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-turtle { font-size: 32px; margin-bottom: 8px; }
+  .footer-text {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .footer-text strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- 히어로 -->
+<div class="hero">
+  <span class="hero-turtle">🐢</span>
+  <div class="hero-eyebrow">일산호수마라톤클럽</div>
+  <div class="hero-title">거북팀에<br><span>오신 걸 환영해요!</span></div>
+  <div class="hero-sub" style="margin-top:10px">함께 달리고, 함께 성장하는 거북팀<br>새로운 가족이 되어주셔서 진심으로 환영합니다 🧡</div>
+</div>
+
+<!-- 1. 대장 소개 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title">대장 소개</div>
+  </div>
+  <div class="captain-intro">
+    <img src="https://raw.githubusercontent.com/reddino78-creator/race-schedule/main/images/captain.png"
+         alt="거북팀 대장들"
+         class="captain-img"
+         onerror="this.style.display='none'">
+    <div class="captain-body">
+      <div class="captain-names">
+        <span class="captain-tag">제제</span>
+        <span class="captain-tag">프로문도</span>
+        <span class="captain-tag">레폴</span>
+        <span class="captain-tag">땅꼬마</span>
+        <span class="captain-tag">연유</span>
+      </div>
+      <div class="captain-text">
+        거북팀의 대장님은 총 5분으로, <strong>제제, 프로문도, 레폴, 땅꼬마, 연유</strong> 님입니다.<br><br>
+        러닝에 있어, 팀에 있어 궁금하시고 어려우신 부분이 있으시면 대장들 중 아무나 잡고 말씀 주시면 최대한 도움 드릴 수 있게 노력하겠습니다.
+      </div>
+      <div class="captain-quote">
+        💬 "함께 달리고, 함께 성장하는 거북팀!"
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. 훈련 일정 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title">정기 훈련 일정</div>
+  </div>
+  <div class="training-list">
+
+    <div class="training-card">
+      <div class="training-day">
+        <div class="day-kr">화</div>
+        <div class="day-en">TUE</div>
+      </div>
+      <div class="training-body">
+        <div class="training-type">인터벌 훈련</div>
+        <div class="training-meta">
+          <span>🕢 저녁 7시 30분</span>
+          <span>📍 고양종합운동장</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="training-card thursday">
+      <div class="training-day">
+        <div class="day-kr">목</div>
+        <div class="day-en">THU</div>
+      </div>
+      <div class="training-body">
+        <div class="training-type">템포런 훈련</div>
+        <div class="training-meta">
+          <span>🕢 저녁 7시 30분</span>
+          <span>📍 고양종합운동장</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="training-card sunday">
+      <div class="training-day">
+        <div class="day-kr">일</div>
+        <div class="day-en">SUN</div>
+      </div>
+      <div class="training-body">
+        <div class="training-type">LSD · 시간주 훈련</div>
+        <div class="training-meta">
+          <span>🌅 오전 6시</span>
+          <span>📍 일산호수공원</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 3. 마일리지 시트 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title">마일리지 시트</div>
+  </div>
+  <div class="mileage-card">
+    <div class="mileage-header">
+      <div class="icon">📊</div>
+      <div>
+        <div class="title">거북팀 마일리지 시트</div>
+        <div class="subtitle">구글 시트로 운영됩니다</div>
+      </div>
+    </div>
+    <div class="mileage-steps">
+      <div class="mileage-step">
+        <div class="step-num">1</div>
+        <div class="step-text">러닝한 거리를 시트에 누적으로 입력</div>
+      </div>
+      <div class="mileage-step">
+        <div class="step-num">2</div>
+        <div class="step-text">러닝 내용을 거북방에 인증 올리기</div>
+      </div>
+      <div class="mileage-step">
+        <div class="step-num">3</div>
+        <div class="step-text">매번 입력이 어려우신 경우, 몰아서 입력 후 인증하셔도 됩니다</div>
+      </div>
+      <div class="mileage-step">
+        <div class="step-num">4</div>
+        <div class="step-text">마일리지 순위는 주 1회 누적 거리 기준으로 정렬됩니다</div>
+      </div>
+    </div>
+    <div class="mileage-note">💡 강제는 아닙니다! 자유롭게 참여해 주세요 😄</div>
+    <a href="https://docs.google.com/spreadsheets/d/11RM51cNRJSXTd_5RQLU9nCVfPxx_QPVv5YjM3FC5fdw/edit?usp=drivesdk"
+       target="_blank" class="mileage-link">
+      📊 마일리지 시트 바로가기 →
+    </a>
+  </div>
+</div>
+
+<!-- 4. 레이스 캘린더 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title">레이스 캘린더</div>
+  </div>
+  <div class="link-cards">
+    <a href="https://race-schedule-lake.vercel.app" target="_blank" class="link-card green">
+      <div class="link-icon">🏁</div>
+      <div class="link-body">
+        <div class="link-title">2026 대회 일정</div>
+        <div class="link-desc">거북팀 추천 마라톤 대회 일정<br>접수 상태 · 연유추천 한눈에</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  <div class="footer-turtle">🐢</div>
+  <div class="footer-text">
+    <strong>일산호수마라톤클럽 거북팀</strong><br>
+    함께 달리고, 함께 성장해요
+  </div>
+</div>
+
+</body>
+</html>
